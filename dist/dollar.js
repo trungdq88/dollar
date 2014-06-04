@@ -1,3 +1,12 @@
+/**
+ * Dollar - javascript utils just like jQuery
+ * https://github.com/trungdq88/dollar
+ * How to use: just like when you use jQuery, ex: $('.item').hide();
+ * Available functions:
+ * on, off, fadeIn, hide, show, addClass, removeClass, each, trigger,
+ * find, parent, css, attr, html, text, hasClass
+ */
+
 (function(root, undefined) {
 
   "use strict";
@@ -28,6 +37,11 @@ var dollar = function (s) {
     $.on = function (eventName, eventHandler) {
       return _each(this, function(el) {
         el.addEventListener(eventName, eventHandler);
+      });
+    };
+    $.off = function(eventName, eventHandler) {
+      return _each(this, function(el) {
+        el.removeEventListener(eventName, eventHandler);
       });
     };
     $.fadeIn = function (duration) {
@@ -85,11 +99,6 @@ var dollar = function (s) {
     $.each = function(callback) {
       Array.prototype.forEach.call(this, function(element, index){
         callback(index, element);
-      });
-    };
-    $.off = function(eventName, eventHandler) {
-      return _each(this, function(el) {
-        el.removeEventListener(eventName, eventHandler);
       });
     };
     $.trigger = function(eventName, data) {

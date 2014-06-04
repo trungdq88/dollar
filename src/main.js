@@ -25,6 +25,11 @@ var dollar = function (s) {
         el.addEventListener(eventName, eventHandler);
       });
     };
+    $.off = function(eventName, eventHandler) {
+      return _each(this, function(el) {
+        el.removeEventListener(eventName, eventHandler);
+      });
+    };
     $.fadeIn = function (duration) {
       if (!duration) {
         duration = 400;
@@ -80,11 +85,6 @@ var dollar = function (s) {
     $.each = function(callback) {
       Array.prototype.forEach.call(this, function(element, index){
         callback(index, element);
-      });
-    };
-    $.off = function(eventName, eventHandler) {
-      return _each(this, function(el) {
-        el.removeEventListener(eventName, eventHandler);
       });
     };
     $.trigger = function(eventName, data) {
