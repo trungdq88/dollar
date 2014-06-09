@@ -182,8 +182,28 @@ var dollar = function (s) {
   }
 };
 
-dollar.ajax = function () {
+dollar.getJSON = function (url, success, failure) {
+  var request = new root.XMLHttpRequest();
+  request.open('GET', '/my/url', true);
 
+  request.onload = function() {
+    if (request.status >= 200 && request.status < 400){
+      // Success!
+      var data = JSON.parse(request.responseText);
+      success(data);
+    } else {
+      failure('We reached our target server, but it returned an error');
+      //
+
+    }
+  };
+
+  request.onerror = function() {
+    failure('There was a connection error of some sort');
+    //
+  };
+
+  request.send();
 };
 
 // Version.
