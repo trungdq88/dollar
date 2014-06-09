@@ -12,7 +12,7 @@ See the [project homepage](http://trungdq88.github.io/dollar).
 
 Using Bower:
 
-    bower install dollar
+    bower install dollarjs
 
 Or grab the [source](https://github.com/trungdq88/dollar/dist/dollar.js) ([minified](https://github.com/trungdq88/dollar/dist/dollar.min.js)).
 
