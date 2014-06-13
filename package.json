@@ -1,6 +1,6 @@
 {
   "name": "dollar",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "dist/dollar.min.js",
   "description": "Javascript useful functions in case of you don't want to use jQuery in your project",
   "repository": {

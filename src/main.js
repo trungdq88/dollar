@@ -200,7 +200,7 @@ dollar.getJSON = function (url, success, failure) {
 };
 
 // Version.
-dollar.VERSION = '1.2.0';
+dollar.VERSION = '1.2.1';
 
 
 // Export to the root, which is probably `window`.
