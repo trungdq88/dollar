@@ -176,20 +176,27 @@ dollar.getJSON = function (url, success, failure) {
     if (request.status >= 200 && request.status < 400){
       // Success!
       var data = JSON.parse(request.responseText);
-      success(data);
+      if (success) {
+        success(data);
+      }
     } else {
-      failure('We reached our target server, but it returned an error');
+      if (failure) {
+        failure('We reached our target server, but it returned an error');
+      }
       //
 
     }
   };
 
   request.onerror = function() {
-    failure('There was a connection error of some sort');
+    if (failure) {
+        failure('There was a connection error of some sort');
+    }
     //
   };
 
   request.send();
+  return request;
 };
 
 // Version.
