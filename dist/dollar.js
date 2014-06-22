@@ -167,6 +167,15 @@ var dollar = function (s) {
                 }
             });
         };
+        $.offset =  function () {
+            return _each(this, function (el) {
+                var rect = el.getBoundingClientRect();
+                return {
+                    top: rect.top + root.document.body.scrollTop,
+                    left: rect.left + root.document.body.scrollLeft
+                };
+            });
+        };
         return $;
     };
 
