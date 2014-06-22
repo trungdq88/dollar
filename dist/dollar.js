@@ -167,15 +167,6 @@ var dollar = function (s) {
                 }
             });
         };
-        $.offset =  function () {
-            return _each(this, function (el) {
-                var rect = el.getBoundingClientRect();
-                return {
-                    top: rect.top + root.document.body.scrollTop,
-                    left: rect.left + root.document.body.scrollLeft
-                };
-            });
-        };
         return $;
     };
 
@@ -199,24 +190,31 @@ dollar.getJSON = function (url, success, failure) {
         if (request.status >= 200 && request.status < 400) {
             // Success!
             var data = JSON.parse(request.responseText);
-            success(data);
+            if (success) {
+                success(data);
+            }
         } else {
-            failure('We reached our target server, but it returned an error');
+            if (failure) {
+                failure('We reached our target server, but it returned an error');
+            }
             //
 
         }
     };
 
     request.onerror = function () {
-        failure('There was a connection error of some sort');
+        if (failure) {
+            failure('There was a connection error of some sort');
+        }
         //
     };
 
     request.send();
+    return request;
 };
 
 // Version.
-dollar.VERSION = '1.2.0';
+dollar.VERSION = '1.2.1';
 
 
 // Export to the root, which is probably `window`.
